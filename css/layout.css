@@ -1,0 +1,52 @@
+/* ===== HEADER / NAVBAR ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #043673;
+    padding: 10px 20px; /* Tinggi navbar dibuat ramping */
+    height: 60px;
+}
+
+.logo h1 {
+    font-size: 22px; /* Ukuran judul lebih kecil */
+    color: white;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+.nav-links li a img {
+    max-width: 25px;
+}
+
+.nav-links li a:hover {
+    color: #FFD700;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #043673;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Footer ramping */
+    font-size: 14px;
+   
+}

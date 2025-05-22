@@ -1,0 +1,29 @@
+.welcome-message h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.welcome-message p {
+    font-size: 16px;
+    color: #475569;
+}
+
+.action-buttons {
+    margin-top: 30px;
+}
+
+.action-link {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 10px 18px;
+    background-color: #0ea5e9;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.action-link:hover {
+    background-color: #0284c7;
+}

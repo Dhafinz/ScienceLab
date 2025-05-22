@@ -1,0 +1,33 @@
+/* HOME.CSS */
+/* Gaya untuk Halaman Home - Section Hero */
+
+.hero {
+    text-align: center;
+    color: #fff;
+    padding: 100px 20px;
+    background: linear-gradient(to right, #0066cc, #004a99);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 10px 0 20px;
+}
+
+.hero .btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #0066cc;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.hero .btn:hover {
+    background-color: #e0e0e0;
+}

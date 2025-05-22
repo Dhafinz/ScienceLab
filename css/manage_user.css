@@ -1,0 +1,40 @@
+.container h2 {
+    font-size: 24px;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.action-links {
+    margin-bottom: 20px;
+}
+
+.action-link {
+    margin-right: 10px;
+    color: white;
+    background-color: #10b981;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.action-link:hover {
+    background-color: #059669;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #e2e8f0;
+    color: #1e293b;
+}

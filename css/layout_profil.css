@@ -1,0 +1,49 @@
+/* layout_profil.css - CSS untuk halaman profil user */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5faff;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    background-color: #1e1e1e;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #3e3e3e;
+}
+
+.profile-content {
+    margin-left: 220px;
+    padding: 30px;
+}
+
+.profile-card {
+    background-color: #5c8dd6;
+    color: black;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+.profile-card strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}

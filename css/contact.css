@@ -1,0 +1,38 @@
+/* ===== CONTACT PAGE ===== */
+.contact-container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-info {
+    margin-bottom: 40px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.contact-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #043673;
+    color: white;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0356a4;
+}
