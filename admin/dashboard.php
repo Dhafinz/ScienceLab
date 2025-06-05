@@ -1,7 +1,8 @@
 <?php
 session_start();
+// Cek apakah user login dan berperan sebagai admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    echo '<script>alert("Akses ditolak. Admin saja yang boleh ke sini."); location.href="../sains/home.php";</script>';
+    echo '<script>alert("Silakan login sebagai admin terlebih dahulu."); location.href="/UKLSains/login/login.php";</script>';
     exit;
 }
 ?>
@@ -25,8 +26,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
                 <li><a href="../sains/home.php">Home</a></li>
                 <li><a href="manage_user.php">Manage User</a></li>
                 <li><a href="manage_contact.php">Manage Contact</a></li>
-                <li><a href="manage_project.php">Manage project</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="manage_project.php">Manage Project</a></li>
+                <li><a href="manage_penemuan.php">Manage Penemuan</a></li>
+                <li><a href="manage_submit.php">Manage Submit</a></li>
+                <li><a href="../sains/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -41,6 +44,9 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         <div class="action-buttons">
             <a href="manage_user.php" class="action-link">Kelola User</a>
             <a href="manage_contact.php" class="action-link">Kelola Contact</a>
+            <a href="manage_project.php" class="action-link">Kelola Project</a>
+            <a href="manage_penemuan.php" class="action-link">Kelola Penemuan</a>
+            <a href="manage_submit.php" class="action-link">Kelola Submit</a>
         </div>
     </div>
 

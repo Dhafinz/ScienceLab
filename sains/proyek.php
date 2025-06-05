@@ -9,9 +9,17 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-// Ambil data proyek berdasarkan kategori
-$query_penemuan = "SELECT * FROM projects WHERE category='penemuan' ORDER BY created_at DESC";
-$query_siswa = "SELECT * FROM projects WHERE category='siswa' ORDER BY created_at DESC";
+// Ambil data penemuan dari tabel penemuan
+$query_penemuan = "SELECT penemuan.*, tb_user.nama AS nama_lengkap FROM penemuan 
+                   LEFT JOIN tb_user ON penemuan.uploaded_by = tb_user.id_user
+                   ORDER BY created_at DESC";
+
+// Ambil proyek siswa dan join untuk ambil nama pengunggah
+$query_siswa = "SELECT projects.*, tb_user.nama AS nama_pengunggah 
+                FROM projects 
+                LEFT JOIN tb_user ON projects.uploaded_by = tb_user.id_user 
+                WHERE projects.category='siswa' 
+                ORDER BY projects.created_at DESC";
 
 $result_penemuan = mysqli_query($conn, $query_penemuan);
 $result_siswa = mysqli_query($conn, $query_siswa);
@@ -53,12 +61,30 @@ $result_siswa = mysqli_query($conn, $query_siswa);
 
         <section class="proyek-section">
             <h3>Penemuan Terbaru</h3>
-            <div class="proyek-grid">
+            <div class="video-grid">
                 <?php while ($row = mysqli_fetch_assoc($result_penemuan)): ?>
-                    <div class="proyek-card">
+                    <div class="video-card">
+                        <?php if (!empty($row['youtube_link'])): ?>
+                            <?php
+                            // Konversi link YouTube ke format embed
+                            $youtube_url = $row['youtube_link'];
+                            $embed_url = '';
+
+                            if (preg_match('/youtu\.be\/([^\?&]+)/', $youtube_url, $matches)) {
+                                $embed_url = 'https://www.youtube.com/embed/' . $matches[1];
+                            } elseif (preg_match('/youtube\.com\/watch\?v=([^\?&]+)/', $youtube_url, $matches)) {
+                                $embed_url = 'https://www.youtube.com/embed/' . $matches[1];
+                            } elseif (preg_match('/youtube\.com\/embed\/([^\?&]+)/', $youtube_url, $matches)) {
+                                $embed_url = $youtube_url;
+                            }
+                            ?>
+                            <iframe width="100%" height="200" src="<?= htmlspecialchars($embed_url); ?>" frameborder="0" allowfullscreen></iframe>
+                        <?php else: ?>
+                            <div class="no-video">Belum ada video</div>
+                        <?php endif; ?>
                         <h4><?= htmlspecialchars($row['title']); ?></h4>
                         <p><?= htmlspecialchars($row['description']); ?></p>
-                        <small>Ditambahkan oleh: <?= htmlspecialchars($row['uploaded_by']); ?></small>
+                        <small>Ditambahkan oleh: <?= htmlspecialchars($row['nama_lengkap']); ?></small>
                     </div>
                 <?php endwhile; ?>
             </div>
@@ -70,7 +96,7 @@ $result_siswa = mysqli_query($conn, $query_siswa);
                 <div class="proyek-card">
                     <h4><?= htmlspecialchars($row['title']); ?></h4>
                     <p><?= htmlspecialchars($row['description']); ?></p>
-                    <small>Ditambahkan oleh: <?= htmlspecialchars($row['uploaded_by']); ?></small>
+                    <small>Ditambahkan oleh: <?= htmlspecialchars($row['nama_pengunggah']); ?></small>
 
                     <!-- Tombol Submit tugas -->
                     <form action="submit_tugas.php" method="get">
@@ -79,9 +105,7 @@ $result_siswa = mysqli_query($conn, $query_siswa);
                     </form>
                 </div>
             <?php endwhile; ?>
-            </div>
         </section>
-
 
         <footer>
             <p>&copy; 2025 ScienceLab.</p>

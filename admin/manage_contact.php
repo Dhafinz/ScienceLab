@@ -2,11 +2,12 @@
 session_start();
 require '../config/koneksi_sains.php';
 
-// Cek login
-if (!isset($_SESSION['user'])) {
-    echo '<script>alert("Silakan login terlebih dahulu"); location.href="/UKLSains/login/login.php";</script>';
+// Cek apakah user login dan berperan sebagai admin
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+    echo '<script>alert("Silakan login sebagai admin terlebih dahulu."); location.href="/UKLSains/login/login.php";</script>';
     exit;
 }
+
 
 // Ambil semua pesan
 $query = "SELECT * FROM contacts ORDER BY tanggal DESC";
@@ -20,7 +21,6 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <title>Kelola Pesan - ScienceLab</title>
     <link rel="stylesheet" href="../css/layout_admin.css">
-    <link rel="stylesheet" href="../css/manage_contact.css"> <!-- Styling tambahan -->
 </head>
 
 <body>
@@ -31,13 +31,15 @@ $result = mysqli_query($koneksi, $query);
                 <li><a href="../sains/home.php">Home</a></li>
                 <li><a href="manage_user.php">Manage User</a></li>
                 <li><a href="manage_contact.php">Manage Contact</a></li>
-                <li><a href="manage_project.php">Manage project</a></li>
+                <li><a href="manage_project.php">Manage Project</a></li>
+                <li><a href="manage_penemuan.php">Manage Penemuan</a></li>
+                <li><a href="manage_submit.php">Manage Submit</a></li>
                 <li><a href="../sains/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="manage-contact-container">
+    <main class="container">
         <h2>Daftar Pesan Masuk</h2>
         <table border="1" cellpadding="10" cellspacing="0">
             <thead>

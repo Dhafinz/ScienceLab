@@ -1,4 +1,4 @@
-/* layout_admin.css */
+/* admin.css – CSS utama untuk semua halaman admin */
 
 /* Reset dasar */
 * {
@@ -8,7 +8,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Layout */
+/* Layout utama */
 body {
     display: flex;
     min-height: 100vh;
@@ -63,36 +63,42 @@ nav .logo h1 {
     margin-left: 240px;
     padding: 30px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 h1, h2 {
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
 
+/* Tombol Aksi */
 .action-buttons, .action-links {
     margin: 20px 0;
+    text-align: center;
 }
 
-.action-link {
+.action-link, .add-contact-btn, .admin-btn {
     display: inline-block;
     background-color: #3b82f6;
     color: #fff;
     padding: 10px 15px;
-    margin-right: 10px;
+    margin: 10px;
     text-decoration: none;
     border-radius: 5px;
     transition: background 0.3s;
+    font-size: 1rem;
 }
 
-.action-link:hover {
+.action-link:hover, .add-contact-btn:hover, .admin-btn:hover {
     background-color: #2563eb;
 }
 
+/* Tabel */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 20px 0;
     background-color: #fff;
 }
 
@@ -109,4 +115,9 @@ table th {
 
 table tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+/* Responsive Logo */
+.logo {
+    text-align: center;
 }

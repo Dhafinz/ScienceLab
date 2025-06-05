@@ -1,0 +1,57 @@
+/* submit_tugas.css */
+
+/* Layout dasar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+    padding: 30px;
+}
+
+/* Container utama */
+.submit-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.submit-form-container h1 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 25px;
+}
+
+/* Form input */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+form input[type="text"],
+form input[type="file"],
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+form button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #2563eb;
+}

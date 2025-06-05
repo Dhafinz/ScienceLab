@@ -3,12 +3,12 @@ require '../config/koneksi_sains.php';
 $conn = $koneksi;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = htmlspecialchars($_POST['name']);
+    $nama = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
-    $subject = htmlspecialchars($_POST['subject']);
-    $message = htmlspecialchars($_POST['message']);
+    $subjek = htmlspecialchars($_POST['subject']);
+    $pesan = htmlspecialchars($_POST['message']);
 
-    $query = "INSERT INTO contacts (name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
+    $query = "INSERT INTO contacts (nama, email, subjek, pesan) VALUES ('$nama', '$email', '$subjek', '$pesan')";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
@@ -20,4 +20,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: contact.php');
     exit;
 }
-?>

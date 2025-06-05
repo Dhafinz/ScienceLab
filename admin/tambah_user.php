@@ -1,8 +1,9 @@
 <?php
 session_start();
-if ($_SESSION['user']['role'] !== 'admin') {
-    header("Location: ../sains/home.php");
-    exit();
+// Cek apakah user login dan berperan sebagai admin
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+    echo '<script>alert("Silakan login sebagai admin terlebih dahulu."); location.href="/UKLSains/login/login.php";</script>';
+    exit;
 }
 
 include_once('../config/koneksi_sains.php');

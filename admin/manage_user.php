@@ -1,8 +1,9 @@
 <?php
 session_start();
+// Cek apakah user login dan berperan sebagai admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    header("Location: ../sains/home.php");
-    exit();
+    echo '<script>alert("Silakan login sebagai admin terlebih dahulu."); location.href="/UKLSains/login/login.php";</script>';
+    exit;
 }
 
 include_once('../config/koneksi_sains.php');
@@ -18,7 +19,6 @@ $result = mysqli_query($koneksi, $sql);
     <meta charset="UTF-8">
     <title>Manage User - ScienceLab</title>
     <link rel="stylesheet" href="../css/layout_admin.css">
-    <link rel="stylesheet" href="../css/manage_user.css">
 </head>
 
 <body>
@@ -29,7 +29,9 @@ $result = mysqli_query($koneksi, $sql);
                 <li><a href="../sains/home.php">Home</a></li>
                 <li><a href="manage_user.php">Manage User</a></li>
                 <li><a href="manage_contact.php">Manage Contact</a></li>
-                <li><a href="manage_project.php">Manage project</a></li>
+                <li><a href="manage_project.php">Manage Project</a></li>
+                <li><a href="manage_penemuan.php">Manage Penemuan</a></li>
+                <li><a href="manage_submit.php">Manage Submit</a></li>
                 <li><a href="../sains/logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -73,7 +75,7 @@ $result = mysqli_query($koneksi, $sql);
                 echo '<td>' . htmlspecialchars($row['password']) . '</td>';
                 echo '<td>' . htmlspecialchars($row['role']) . '</td>';
                 echo '<td>';
-                echo '<a class="action-link" href="edit_user.php?id=' . $row['id_user'] . '">Edit | </a>';
+                echo '<a class="action-link" href="edit_user.php?id=' . $row['id_user'] . '">Edit </a>';
                 echo '<a class="action-link" href="delete_user.php?id=' . $row['id_user'] . '" onclick="return confirm(\'Apakah Anda yakin ingin menghapus user ini?\')">Delete</a>';
                 echo '</td>';
                 echo '</tr>';
